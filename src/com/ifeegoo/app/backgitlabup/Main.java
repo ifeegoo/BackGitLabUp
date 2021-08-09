@@ -33,6 +33,14 @@ public class Main {
                             System.out.println("java -jar BackGitLabUp.jar -ver");
                             System.out.println("java -jar BackGitLabUp.jar -version");
                         }
+                        break;
+                        case "-v":
+                        case "-ver":
+                        case "-version":
+                        {
+                            System.out.println(NAME_TOOL + ": " + BackGitLabUp.VERSION.NAME + "(" + BackGitLabUp.VERSION.BUILD +")");
+                        }
+                        break;
                     }
                 }
             }
