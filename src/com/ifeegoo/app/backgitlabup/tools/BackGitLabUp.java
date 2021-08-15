@@ -49,6 +49,6 @@ public class BackGitLabUp {
          *
          * @since 0.1.0
          */
-        public static final String NAME = String.valueOf(MAJOR) + "." + String.valueOf(MINOR) + "." + String.valueOf(PATCH) + "-" + STATUS;
+        public static final String NAME = MAJOR + "." + MINOR + "." + PATCH + "-" + STATUS;
     }
 }
