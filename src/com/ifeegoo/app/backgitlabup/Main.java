@@ -5,7 +5,7 @@ import com.ifeegoo.app.backgitlabup.tools.BackGitLabUp;
 public class Main {
 
     private static String sParameter;
-    private static final String NAME_TOOL = "BackGitLabUp";
+    private static final String NAME_TOOL = BackGitLabUp.class.getSimpleName();
 
     public static void main(String[] args) {
         if ((args != null) && (args.length >= 1))
