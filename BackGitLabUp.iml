@@ -7,6 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="squareup.okhttp3.okhttp" level="project" />
+    <orderEntry type="library" name="alibaba.fastjson" level="project" />
   </component>
 </module>
-
