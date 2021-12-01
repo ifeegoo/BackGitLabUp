@@ -32,6 +32,15 @@ public class Main {
                             System.out.println("java -jar BackGitLabUp.jar -v");
                             System.out.println("java -jar BackGitLabUp.jar -ver");
                             System.out.println("java -jar BackGitLabUp.jar -version");
+                            System.out.println();
+                            System.out.println(
+                                    "3.Use [-backup] [GitLabURL] [GitLabGroupID] [GitLabPrivateToken] [GitLabRepositoryAccessType] to backup GitLab git repositories.");
+                            System.out.println(
+                                    "java -jar BackGitLabUp.jar -backup http://192.168.11.11/gitlab 171752 aC4xVWx13wfhSa9xeyfA HTTP");
+                            System.out.println(
+                                    "java -jar BackGitLabUp.jar -backup http://gitlab.chipsguide.com 31313 3A2xw68rjjf5kSevnwsx SSH");
+                            System.out.println(
+                                    "java -jar BackGitLabUp.jar -backup http://gitlab.com 1373030 3A2xw68rjjf5kSevnwsx SSH");
                         }
                         break;
                         case "-v":
