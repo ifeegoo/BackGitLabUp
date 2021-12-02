@@ -5,6 +5,11 @@ import com.ifeegoo.app.backgitlabup.tools.BackGitLabUp;
 public class Main {
 
     private static String sParameter;
+    private static String sGitLabUrl;
+    private static String sGitLabGroupID;
+    private static String sGitLabPrivateToken;
+    private static String sGitLabRepositoryAccessType;
+
     private static final String NAME_TOOL = BackGitLabUp.class.getSimpleName();
 
     public static void main(String[] args) {
@@ -50,8 +55,43 @@ public class Main {
                             System.out.println(NAME_TOOL + ": " + BackGitLabUp.VERSION.NAME + "(" + BackGitLabUp.VERSION.BUILD +")");
                         }
                         break;
+                        default:
+                        System.out.println(
+                                "The parameters may be wrong.You can use [-help] to get the information of using BackGitLabUp.");
+                        System.out.println("java -jar BackGitLabUp.jar -help");
+                        break;
                     }
                 }
+                break;
+                case 5:
+                {
+                    switch (sParameter)
+                    {
+                        case "-backup":
+                        {
+                            sGitLabUrl = args[1];
+                            sGitLabGroupID = args[2];
+                            sGitLabPrivateToken = args[3];
+                            sGitLabRepositoryAccessType = args[4];
+
+                            BackGitLabUp gitLabBackupManager = new BackGitLabUp();
+
+                            //TODO
+                        }
+                        break;
+                        default:
+                            System.out.println(
+                                    "The parameters may be wrong.You can use [-help] to get the information of using BackGitLabUp.");
+                            System.out.println("java -jar BackGitLabUp.jar -help");
+                            break;
+                    }
+                }
+                break;
+                default:
+                System.out.println(
+                        "The parameters may be wrong.You can use [-help] to get the information of using BackGitLabUp.");
+                System.out.println("java -jar BackGitLabUp.jar -help");
+                break;
             }
         }
     }
