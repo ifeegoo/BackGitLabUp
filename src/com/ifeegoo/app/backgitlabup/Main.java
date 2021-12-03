@@ -73,9 +73,6 @@ public class Main {
                             sGitLabGroupID = args[2];
                             sGitLabPrivateToken = args[3];
                             sGitLabRepositoryAccessType = args[4];
-
-                            BackGitLabUp gitLabBackupManager = new BackGitLabUp();
-
                             //TODO
                         }
                         break;

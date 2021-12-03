@@ -2,6 +2,56 @@ package com.ifeegoo.app.backgitlabup.tools;
 
 public class BackGitLabUp {
 
+    private static BackGitLabUp sBackGitLabUp;
+    private String mGitLabURL;
+    private String mGitLabGroupID;
+    private String mGitLabPrivateToken;
+    private String mGitLabRepositoryAccessType;
+
+    private BackGitLabUp()
+    {
+    }
+
+    public static synchronized BackGitLabUp getInstance()
+    {
+        if (sBackGitLabUp == null)
+        {
+            sBackGitLabUp = new BackGitLabUp();
+        }
+
+        return sBackGitLabUp;
+    }
+
+    public BackGitLabUp setGitLabURL(String gitLabURL)
+    {
+        this.mGitLabURL = gitLabURL;
+
+        return sBackGitLabUp;
+    }
+
+    public BackGitLabUp setGitLabGroupID(String gitLabGroupID)
+    {
+        this.mGitLabGroupID = gitLabGroupID;
+
+        return sBackGitLabUp;
+    }
+
+    public BackGitLabUp setGitLabPrivateToken(String gitLabPrivateToken)
+    {
+        this.mGitLabPrivateToken = gitLabPrivateToken;
+
+        return sBackGitLabUp;
+    }
+
+    public BackGitLabUp setGitLabRepositoryAccessType(String gitLabRepositoryAccessType)
+    {
+        this.mGitLabRepositoryAccessType = gitLabRepositoryAccessType;
+
+        return sBackGitLabUp;
+    }
+
+
+
     /**
      * This is a helper class for users to get the version of BackGitLabUp.
      *
