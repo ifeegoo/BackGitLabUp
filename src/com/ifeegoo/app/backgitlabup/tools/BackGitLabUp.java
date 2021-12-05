@@ -6,6 +6,10 @@ import com.ifeegoo.app.backgitlabup.beans.Response;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
+import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +37,56 @@ public class BackGitLabUp {
         }
 
         return sBackGitLabUp;
+    }
+
+    /**
+     * This is a helper class for users to get the version of BackGitLabUp.
+     *
+     * @since 0.1.0
+     */
+    public static final class VERSION {
+
+        /**
+         * The build number of BackGitLabUp.
+         *
+         * @since 0.1.0
+         */
+        public static final int BUILD = 1;
+
+        /**
+         * The major number of the version name of BackGitLabUp.
+         *
+         * @since 0.1.0
+         */
+        public static final int MAJOR = 0;
+
+        /**
+         * The minor number of the version name of BackGitLabUp.
+         *
+         * @since 0.1.0
+         */
+        public static final int MINOR = 1;
+
+        /**
+         * The patch number of the version name of BackGitLabUp.
+         *
+         * @since 0.1.0
+         */
+        public static final int PATCH = 0;
+
+        /**
+         * The status of the version name of BackGitLabUp.
+         *
+         * @since 0.1.0
+         */
+        public static final String STATUS = "";
+
+        /**
+         * The version name of BackGitLabUp.
+         *
+         * @since 0.1.0
+         */
+        public static final String NAME = MAJOR + "." + MINOR + "." + PATCH + "-" + STATUS;
     }
 
     public BackGitLabUp setGitLabURL(String gitLabURL)
@@ -71,6 +125,12 @@ public class BackGitLabUp {
     }
 
     public void start()
+    {
+        this.getTotalRepositoriesURLs();
+        this.generateBashFile();
+    }
+
+    private void getTotalRepositoriesURLs()
     {
         String apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/groups/" + this.mGitLabGroupID + "?private_token=" + this.mGitLabPrivateToken;
 
@@ -136,54 +196,75 @@ public class BackGitLabUp {
         return result;
     }
 
+    private void generateBashFile()
+    {
+        BufferedOutputStream bufferedOutput = null;
 
-    /**
-     * This is a helper class for users to get the version of BackGitLabUp.
-     *
-     * @since 0.1.0
-     */
-    public static final class VERSION {
+        try
+        {
 
-        /**
-         * The build number of BackGitLabUp.
-         *
-         * @since 0.1.0
-         */
-        public static final int BUILD = 1;
+            bufferedOutput = new BufferedOutputStream(new FileOutputStream("BackGitLabUp.sh"));
 
-        /**
-         * The major number of the version name of BackGitLabUp.
-         *
-         * @since 0.1.0
-         */
-        public static final int MAJOR = 0;
+            bufferedOutput.write("GITLAB_REPOSITORIES_URLS=(".getBytes());
+            for (int i = 0; i < this.mTotalRepositoriesURLs.size(); i++)
+            {
+                bufferedOutput.write(("\n" + this.mTotalRepositoriesURLs.get(i)).getBytes());
+            }
+            bufferedOutput.write(")\n\n".getBytes());
 
-        /**
-         * The minor number of the version name of BackGitLabUp.
-         *
-         * @since 0.1.0
-         */
-        public static final int MINOR = 1;
+            bufferedOutput.write("GITLAB_REPOSITORIES_DIRS=(".getBytes());
+            for (int i = 0; i < this.mTotalRepositoriesDirectories.size(); i++)
+            {
+                bufferedOutput.write(("\n" + this.mTotalRepositoriesDirectories.get(i)).getBytes());
+            }
+            bufferedOutput.write(")\n\n".getBytes());
 
-        /**
-         * The patch number of the version name of BackGitLabUp.
-         *
-         * @since 0.1.0
-         */
-        public static final int PATCH = 0;
+            bufferedOutput.write("if [ ! -d \"BackGitLabUp\" ]; then\n".getBytes());
+            bufferedOutput.write("  echo \"Creating folder BackGitLabUp\"\n".getBytes());
+            bufferedOutput.write("  mkdir \"BackGitLabUp\"\n".getBytes());
+            bufferedOutput.write("  cd \"BackGitLabUp\"\n".getBytes());
+            bufferedOutput.write("else\n".getBytes());
+            bufferedOutput.write("  echo \"BackGitLabUp directory is exist\"\n".getBytes());
+            bufferedOutput.write("  if [ \"$(ls -A BackGitLabUp)\" ]; then\n".getBytes());
+            bufferedOutput.write(
+                    "     echo \"\\033[1;31mBackGitLabUp directory is not empty, BackGitLabUp default directory is BackGitLabUp, make sure that you are not using BackGitLabUp under the directory now.\\033[0m\"\n".getBytes());
+            bufferedOutput.write("     exit\n".getBytes());
+            bufferedOutput.write("  fi\n".getBytes());
+            bufferedOutput.write("fi\n\n".getBytes());
 
-        /**
-         * The status of the version name of BackGitLabUp.
-         *
-         * @since 0.1.0
-         */
-        public static final String STATUS = "";
-
-        /**
-         * The version name of BackGitLabUp.
-         *
-         * @since 0.1.0
-         */
-        public static final String NAME = MAJOR + "." + MINOR + "." + PATCH + "-" + STATUS;
+            bufferedOutput.write(
+                    ("for index in {0.." + (this.mTotalRepositoriesDirectories.size() - 1) + "}\n").getBytes());
+            bufferedOutput.write(("do\n").getBytes());
+            bufferedOutput.write(
+                    ("echo \"\\033[32mStart cloning \"$index\"/" + (this.mTotalRepositoriesDirectories.size() - 1) + "\\033[0m\"\n\n").getBytes());
+            bufferedOutput.write(("  if [ ! -d ${GITLAB_REPOSITORIES_DIRS[${index}]} ]; then\n").getBytes());
+            bufferedOutput.write(("    echo \"Creating folder \"${GITLAB_REPOSITORIES_DIRS[${index}]}\n").getBytes());
+            bufferedOutput.write(("    mkdir -p ${GITLAB_REPOSITORIES_DIRS[${index}]}\n").getBytes());
+            bufferedOutput.write(
+                    ("    git clone ${GITLAB_REPOSITORIES_URLS[${index}]} ${GITLAB_REPOSITORIES_DIRS[${index}]}\n").getBytes());
+            bufferedOutput.write(("  fi\n\n").getBytes());
+            bufferedOutput.write(
+                    ("echo \"\\033[32mFinished cloning \"$index\"/" + (this.mTotalRepositoriesDirectories.size() - 1) + "\\033[0m\"\n\n").getBytes());
+            bufferedOutput.write(("done").getBytes());
+        } catch (FileNotFoundException ex)
+        {
+            ex.printStackTrace();
+        } catch (IOException ex)
+        {
+            ex.printStackTrace();
+        } finally
+        {
+            try
+            {
+                if (bufferedOutput != null)
+                {
+                    bufferedOutput.flush();
+                    bufferedOutput.close();
+                }
+            } catch (IOException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
     }
 }
