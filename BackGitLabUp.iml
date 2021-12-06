@@ -10,5 +10,6 @@
     <orderEntry type="library" name="squareup.okhttp3.okhttp" level="project" />
     <orderEntry type="library" name="alibaba.fastjson" level="project" />
     <orderEntry type="library" name="annotations-13.0" level="project" />
+    <orderEntry type="library" name="kotlin-stdlib-common-1.4.0" level="project" />
   </component>
 </module>

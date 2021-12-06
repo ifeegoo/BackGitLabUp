@@ -15,6 +15,7 @@ public class Main {
                     {
                         case "-help":
                         {
+                            System.out.println("****************************************************************");
                             System.out.println(BackGitLabUp.class.getSimpleName() + ": " + BackGitLabUp.VERSION.NAME + "(" + BackGitLabUp.VERSION.BUILD +")");
                             System.out.println(BackGitLabUp.class.getSimpleName() + " is a simple & useful GitLab backup tool.");
                             System.out.println();
@@ -24,6 +25,7 @@ public class Main {
                             System.out.println("java -jar BackGitLabUp.jar -help");
                             System.out.println();
                             System.out.print("2. Use [-v] or [-ver] or [-version] to get the Version of BackGitLabUp.");
+                            System.out.println();
                             System.out.println("java -jar BackGitLabUp.jar -v");
                             System.out.println("java -jar BackGitLabUp.jar -ver");
                             System.out.println("java -jar BackGitLabUp.jar -version");
@@ -36,6 +38,7 @@ public class Main {
                                     "java -jar BackGitLabUp.jar -backup http://gitlab.ifeegoo.com v4 31313 3A2xw68rjjf5kSevnwsx SSH");
                             System.out.println(
                                     "java -jar BackGitLabUp.jar -backup http://gitlab.com 1373030 v4 3A2xw68rjjf5kSevnwsx SSH");
+                            System.out.println("****************************************************************");
                         }
                         break;
                         case "-v":
