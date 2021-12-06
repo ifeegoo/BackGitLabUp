@@ -260,6 +260,8 @@ public class BackGitLabUp {
                 {
                     bufferedOutput.flush();
                     bufferedOutput.close();
+
+                    Runtime.getRuntime().exec("echo \"The BackGitLabUp bash shell file is created.\"");
                 }
             } catch (IOException ex)
             {
