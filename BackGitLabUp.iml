@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="squareup.okhttp3.okhttp" level="project" />
     <orderEntry type="library" name="alibaba.fastjson" level="project" />
+    <orderEntry type="library" name="annotations-13.0" level="project" />
   </component>
 </module>
