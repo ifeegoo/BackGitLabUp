@@ -1,10 +1,11 @@
 package com.ifeegoo.app.backgitlabup.tools;
 
 import com.alibaba.fastjson.JSON;
-import com.ifeegoo.app.backgitlabup.beans.ProjectsItem;
-import com.ifeegoo.app.backgitlabup.beans.Response;
+import com.ifeegoo.app.backgitlabup.beans.Project;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
@@ -130,43 +131,87 @@ public class BackGitLabUp {
         this.generateBashFile();
     }
 
+//    private void getTotalRepositoriesURLs()
+//    {
+//        String apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "?private_token=" + this.mGitLabPrivateToken;
+//
+//        try
+//        {
+//            run(apiURL);
+//
+//            Response response = JSON.parseObject(run(apiURL), Response.class);
+//
+//
+//            List<ProjectsItem> projects = response.getProjects();
+//
+//            if ((projects == null) || (projects.size() == 0))
+//            {
+//                return;
+//            }
+//
+//            for (int i = 0; i < projects.size(); i++)
+//            {
+//                switch (this.mGitLabRepositoryAccessType)
+//                {
+//                    case "SSH":
+//                        this.mTotalRepositoriesURLs.add(projects.get(i).getSshUrlToRepo());
+//                        break;
+//                    case "HTTP":
+//                        this.mTotalRepositoriesURLs.add(projects.get(i).getHttpUrlToRepo());
+//                        break;
+//                }
+//
+//                this.mTotalRepositoriesDirectories.add(projects.get(i).getPathWithNamespace());
+//            }
+//
+//
+//        } catch (Exception e)
+//        {
+//
+//        }
+//    }
+
     private void getTotalRepositoriesURLs()
     {
-        String apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/groups/" + this.mGitLabGroupID + "?private_token=" + this.mGitLabPrivateToken;
-
-        try
+        int page = 0;
+        while (true)
         {
-            run(apiURL);
-
-            Response response = JSON.parseObject(run(apiURL), Response.class);
-
-
-            List<ProjectsItem> projects = response.getProjects();
-
-            if ((projects == null) || (projects.size() == 0))
+            page++;
+            String apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/projects?private_token=" + this.mGitLabPrivateToken + "&per_page=100&page=" + page;
+            try
             {
-                return;
-            }
+                List<Project> projects = JSON.parseArray(run(apiURL), Project.class);
 
-            for (int i = 0; i < projects.size(); i++)
-            {
-                switch (this.mGitLabRepositoryAccessType)
+                if (projects == null)
                 {
-                    case "SSH":
-                        this.mTotalRepositoriesURLs.add(projects.get(i).getSshUrlToRepo());
-                        break;
-                    case "HTTP":
-                        this.mTotalRepositoriesURLs.add(projects.get(i).getHttpUrlToRepo());
-                        break;
+                    break;
                 }
 
-                this.mTotalRepositoriesDirectories.add(projects.get(i).getPathWithNamespace());
+                for (int i = 0; i < projects.size(); i++)
+                {
+                    switch (this.mGitLabRepositoryAccessType)
+                    {
+                        case "SSH":
+                            this.mTotalRepositoriesURLs.add(projects.get(i).getSshUrlToRepo());
+                            break;
+                        case "HTTP":
+                            this.mTotalRepositoriesURLs.add(projects.get(i).getHttpUrlToRepo());
+                            break;
+                    }
+
+                    this.mTotalRepositoriesDirectories.add(projects.get(i).getPathWithNamespace());
+                }
+
+                if (projects.size() < 100)
+                {
+                    break;
+                }
+
+
+            }catch (Exception e)
+            {
+                break;
             }
-
-
-        } catch (Exception e)
-        {
-
         }
     }
 
@@ -175,7 +220,7 @@ public class BackGitLabUp {
     private String run(String url) throws Exception
     {
         Request request;
-        okhttp3.Response response = null;
+        Response response = null;
 
         try
         {
@@ -189,11 +234,7 @@ public class BackGitLabUp {
 
         }
 
-        String result = response.body().string();
-
-        System.out.println(result);
-
-        return result;
+        return response.body().string();
     }
 
     private void generateBashFile()

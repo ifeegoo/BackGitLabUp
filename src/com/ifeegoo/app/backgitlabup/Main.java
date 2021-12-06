@@ -56,13 +56,13 @@ public class Main {
                     }
                 }
                 break;
-                case 6:
+                case 5:
                 {
                     switch (args[0])
                     {
                         case "-backup":
                         {
-                            BackGitLabUp.getInstance().setGitLabURL(args[1]).setGitLabAPIVersion(args[2]).setGitLabGroupID(args[3]).setGitLabPrivateToken(args[4]).setGitLabRepositoryAccessType(args[5]).start();
+                            BackGitLabUp.getInstance().setGitLabURL(args[1]).setGitLabAPIVersion(args[2]).setGitLabPrivateToken(args[3]).setGitLabRepositoryAccessType(args[4]).start();
                         }
                         break;
                         default:

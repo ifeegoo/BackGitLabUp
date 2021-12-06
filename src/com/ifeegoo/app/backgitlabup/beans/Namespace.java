@@ -1,112 +1,87 @@
 package com.ifeegoo.app.backgitlabup.beans;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import java.util.Date;
 
-import javax.annotation.processing.Generated;
+public class Namespace {
 
-@Generated("com.robohorse.robopojogenerator")
-public class Namespace{
+    private int id;
+    private String name;
+    private String path;
+    private String ownerId;
+    private Date createdAt;
+    private Date updatedAt;
+    private String description;
+    private Avatar avatar;
+    private boolean shareWithGroupLock;
+    private int visibilityLevel;
+    public void setId(int id) {
+         this.id = id;
+     }
+     public int getId() {
+         return id;
+     }
 
-	@JSONField(name="path")
-	private String path;
+    public void setName(String name) {
+         this.name = name;
+     }
+     public String getName() {
+         return name;
+     }
 
-	@JSONField(name="avatar_url")
-	private String avatarUrl;
+    public void setPath(String path) {
+         this.path = path;
+     }
+     public String getPath() {
+         return path;
+     }
 
-	@JSONField(name="web_url")
-	private String webUrl;
+    public void setOwnerId(String ownerId) {
+         this.ownerId = ownerId;
+     }
+     public String getOwnerId() {
+         return ownerId;
+     }
 
-	@JSONField(name="kind")
-	private String kind;
+    public void setCreatedAt(Date createdAt) {
+         this.createdAt = createdAt;
+     }
+     public Date getCreatedAt() {
+         return createdAt;
+     }
 
-	@JSONField(name="parent_id")
-	private Object parentId;
+    public void setUpdatedAt(Date updatedAt) {
+         this.updatedAt = updatedAt;
+     }
+     public Date getUpdatedAt() {
+         return updatedAt;
+     }
 
-	@JSONField(name="name")
-	private String name;
+    public void setDescription(String description) {
+         this.description = description;
+     }
+     public String getDescription() {
+         return description;
+     }
 
-	@JSONField(name="id")
-	private int id;
+    public void setAvatar(Avatar avatar) {
+         this.avatar = avatar;
+     }
+     public Avatar getAvatar() {
+         return avatar;
+     }
 
-	@JSONField(name="full_path")
-	private String fullPath;
+    public void setShareWithGroupLock(boolean shareWithGroupLock) {
+         this.shareWithGroupLock = shareWithGroupLock;
+     }
+     public boolean getShareWithGroupLock() {
+         return shareWithGroupLock;
+     }
 
-	public void setPath(String path){
-		this.path = path;
-	}
+    public void setVisibilityLevel(int visibilityLevel) {
+         this.visibilityLevel = visibilityLevel;
+     }
+     public int getVisibilityLevel() {
+         return visibilityLevel;
+     }
 
-	public String getPath(){
-		return path;
-	}
-
-	public void setAvatarUrl(String avatarUrl){
-		this.avatarUrl = avatarUrl;
-	}
-
-	public String getAvatarUrl(){
-		return avatarUrl;
-	}
-
-	public void setWebUrl(String webUrl){
-		this.webUrl = webUrl;
-	}
-
-	public String getWebUrl(){
-		return webUrl;
-	}
-
-	public void setKind(String kind){
-		this.kind = kind;
-	}
-
-	public String getKind(){
-		return kind;
-	}
-
-	public void setParentId(Object parentId){
-		this.parentId = parentId;
-	}
-
-	public Object getParentId(){
-		return parentId;
-	}
-
-	public void setName(String name){
-		this.name = name;
-	}
-
-	public String getName(){
-		return name;
-	}
-
-	public void setId(int id){
-		this.id = id;
-	}
-
-	public int getId(){
-		return id;
-	}
-
-	public void setFullPath(String fullPath){
-		this.fullPath = fullPath;
-	}
-
-	public String getFullPath(){
-		return fullPath;
-	}
-
-	@Override
- 	public String toString(){
-		return 
-			"Namespace{" + 
-			"path = '" + path + '\'' + 
-			",avatar_url = '" + avatarUrl + '\'' + 
-			",web_url = '" + webUrl + '\'' + 
-			",kind = '" + kind + '\'' + 
-			",parent_id = '" + parentId + '\'' + 
-			",name = '" + name + '\'' + 
-			",id = '" + id + '\'' + 
-			",full_path = '" + fullPath + '\'' + 
-			"}";
-		}
 }
