@@ -19,7 +19,6 @@ public class BackGitLabUp {
     private static BackGitLabUp sBackGitLabUp;
     private String mGitLabURL = "";
     private String mGitLabAPIVersion = "";
-    private String mGitLabGroupID = "";
     private String mGitLabPrivateToken = "";
     private String mGitLabRepositoryAccessType = "";
 
@@ -104,13 +103,6 @@ public class BackGitLabUp {
         return sBackGitLabUp;
     }
 
-    public BackGitLabUp setGitLabGroupID(String gitLabGroupID)
-    {
-        this.mGitLabGroupID = gitLabGroupID;
-
-        return sBackGitLabUp;
-    }
-
     public BackGitLabUp setGitLabPrivateToken(String gitLabPrivateToken)
     {
         this.mGitLabPrivateToken = gitLabPrivateToken;
@@ -130,46 +122,6 @@ public class BackGitLabUp {
         this.getTotalRepositoriesURLs();
         this.generateBashFile();
     }
-
-//    private void getTotalRepositoriesURLs()
-//    {
-//        String apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "?private_token=" + this.mGitLabPrivateToken;
-//
-//        try
-//        {
-//            run(apiURL);
-//
-//            Response response = JSON.parseObject(run(apiURL), Response.class);
-//
-//
-//            List<ProjectsItem> projects = response.getProjects();
-//
-//            if ((projects == null) || (projects.size() == 0))
-//            {
-//                return;
-//            }
-//
-//            for (int i = 0; i < projects.size(); i++)
-//            {
-//                switch (this.mGitLabRepositoryAccessType)
-//                {
-//                    case "SSH":
-//                        this.mTotalRepositoriesURLs.add(projects.get(i).getSshUrlToRepo());
-//                        break;
-//                    case "HTTP":
-//                        this.mTotalRepositoriesURLs.add(projects.get(i).getHttpUrlToRepo());
-//                        break;
-//                }
-//
-//                this.mTotalRepositoriesDirectories.add(projects.get(i).getPathWithNamespace());
-//            }
-//
-//
-//        } catch (Exception e)
-//        {
-//
-//        }
-//    }
 
     private void getTotalRepositoriesURLs()
     {
