@@ -31,13 +31,17 @@ public class Main {
                             System.out.println("java -jar BackGitLabUp.jar -version");
                             System.out.println();
                             System.out.println(
-                                    "3.Use [-backup] [GitLabURL] [GitLabAPIVersion] [GitLabGroupID] [GitLabPrivateToken] [GitLabRepositoryAccessType] to backup GitLab git repositories.");
+                                    "3.1 Use [-backup] [GitLabURL] [GitLabAPIVersion] [GitLabPrivateToken] [GitLabRepositoryAccessType] to fetch data of all GitLab git repositories, and then we can get the BackGitLabUp.sh file.");
                             System.out.println(
-                                    "java -jar BackGitLabUp.jar -backup http://192.168.11.11/gitlab v3 171752 aC4xVWx13wfhSa9xeyfA HTTP");
+                                    "java -jar BackGitLabUp.jar -backup http://192.168.11.11/gitlab v3 aC4xVWx13wfhSa9xeyfA HTTP");
                             System.out.println(
-                                    "java -jar BackGitLabUp.jar -backup http://gitlab.ifeegoo.com v4 31313 3A2xw68rjjf5kSevnwsx SSH");
+                                    "java -jar BackGitLabUp.jar -backup http://gitlab.ifeegoo.com v4 3A2xw68rjjf5kSevnwsx SSH");
                             System.out.println(
-                                    "java -jar BackGitLabUp.jar -backup http://gitlab.com 1373030 v4 3A2xw68rjjf5kSevnwsx SSH");
+                                    "java -jar BackGitLabUp.jar -backup http://gitlab.com v4 3A2xw68rjjf5kSevnwsx SSH");
+                            System.out.println(
+                                    "3.2 Just check the BackGitLabUp.sh file, make sure that you can see the data of all GitLab Git repositories and check whether they are right, and then you can just do the follow shell command in your terminal to download all the Git repositories, and remember don't close the terminal!!");
+                            System.out.println(
+                                    "sh BackGitLabUp.sh");
                             System.out.println("****************************************************************");
                         }
                         break;

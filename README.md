@@ -2,28 +2,59 @@
 
 ## Introduction
 
-BackGitLabUp is a simple & useful GitLab backup tool.
+BackGitLabUp is a simple & useful GitLab backup tool on macOS which helps you to download all the git repositories that you can access to your local macOS.
 
-## GitLab EE history package
+## How to use it?
 
-Here we have the history GitLab EE packages.
+> Step 1: Java & Git Environment
 
-https://packages.gitlab.com/gitlab/gitlab-ee
+**Make sure Java environment is on your macOS and you can do global Java commands in your terminal, and then install Git on your macOS and make sure you can do global Git commands in your terminal.**
 
-## GitLab EE API
+For example:
 
-https://docs.gitlab.com/ee/api/
+> Step 2: BackGitLabUp.jar.
 
-### Version API
+Download BackGitLabUp.jar from this GitHub repository release:
 
-https://docs.gitlab.com/ee/api/version.html
+> Step 3: Parameters checking `GitLabURL` `GitLabAPIVersion` `GitLabPrivateToken` `GitLabRepositoryAccessType`
 
-## GitLab API v3 to v4
+`GitLabURL` Your GitLab URL address.
 
-https://docs.gitlab.com/ee/api/v3_to_v4.html
+Just like：  
+`http://192.168.11.11/gitlab`  
+`https://gitlab.ifeegoo.com`  
+`https://gitlab.com`
 
-**The GitLab API v3 was removed in GitLab 11.0.**
+`GitLabAPIVersion` Your GitLab API version, base on GitLab version.  
+`v3` Under GitLab v11.0  
+`v4` GitLab v11.0 or above
 
-## GitLab v3
 
-https://gitlab.com/gitlab-org/gitlab-foss/-/blob/8-16-stable/doc/api/README.md
+`GitLabPrivateToken` Your personal ***User Settings*** -> ***Access Tokens***.
+
+
+`GitLabRepositoryAccessType` The access type that you want to clone your Git repositories.  
+`HTTP` You want to clone your Git repositories by HTTP, and then you will need to input your username and password before repositories cloning.  
+`SSH` You want to clone your Git repositories by SSH, and then you will need to configure SSH between your computer and GitLab first, and then start step 1.
+
+> Step 4: Execute 1st shell command in your Terminal on macOS to fetch the data of all Git repositories.
+
+Use `java -jar BackGitLabUp.jar` `[-backup]` `[GitLabURL]` `[GitLabAPIVersion]` `[GitLabPrivateToken]` `[GitLabRepositoryAccessType]` to fetch data of all GitLab git repositories, and then we can get the BackGitLabUp.sh file.
+
+`java -jar BackGitLabUp.jar -backup http://192.168.11.11/gitlab v3 aC4xVWx13wfs5a9xeyfA HTTP`  
+`java -jar BackGitLabUp.jar -backup http://gitlab.ifeegoo.com v4 3A2xw68rjjf37Sevnwsx SSH`  
+`java -jar BackGitLabUp.jar -backup http://gitlab.com v4 3A2xw68rjjf5k26vnwsx SSH`
+
+> Step 5: Execute 2nd shell command in your Terminal on macOS to clone all Git repositories THAT YOU CAN ACCESS.  
+
+Before you do this step, please check the `BackGitLabUp.sh` file carefully to make sure the data of Git repositories exactly right, the URLs and total account, and then you can execute the following command.
+
+`sh BackGitLabUp.sh`
+
+And then you can see this:  
+
+
+
+
+
+
