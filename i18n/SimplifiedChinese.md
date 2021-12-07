@@ -20,7 +20,7 @@ BackGitLabUp 是一个简单且有用的 GitLab 备份工具，能够帮助你�
 
 ### 第 2 步： BackGitLabUp.jar
 
-从这个 GitHub 仓库的 release 里面下载 BackGitLabUp.jar 文件：
+从这个 GitHub 仓库的 release 里面下载 BackGitLabUp.jar 文件：[BackGitLabUp.jar](https://github.com/ifeegoo/BackGitLabUp/releases/download/v0.1.0/BackGitLabUp.jar)
 
 ### 第 3 步：核对你想要备份的 Git 仓库的范围
 
