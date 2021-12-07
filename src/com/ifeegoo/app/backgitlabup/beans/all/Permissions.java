@@ -1,4 +1,4 @@
-package com.ifeegoo.app.backgitlabup.beans;
+package com.ifeegoo.app.backgitlabup.beans.all;
 
 public class Permissions
 {

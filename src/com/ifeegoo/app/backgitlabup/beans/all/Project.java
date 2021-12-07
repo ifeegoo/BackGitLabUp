@@ -1,10 +1,7 @@
-package com.ifeegoo.app.backgitlabup.beans;
+package com.ifeegoo.app.backgitlabup.beans.all;
 
 import java.util.Date;
 import java.util.List;
-
-import com.ifeegoo.app.backgitlabup.beans.Permissions;
-import com.ifeegoo.app.backgitlabup.beans.Namespace;
 
 public class Project
 {

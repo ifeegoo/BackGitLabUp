@@ -1,7 +1,7 @@
 package com.ifeegoo.app.backgitlabup.tools;
 
 import com.alibaba.fastjson.JSON;
-import com.ifeegoo.app.backgitlabup.beans.Project;
+import com.ifeegoo.app.backgitlabup.beans.all.Project;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
