@@ -6,15 +6,15 @@ BackGitLabUp 是一个简单且有用的 GitLab 备份工具，能够帮助你�
 
 ## 谁以及什么情况下可用？
 
-This simple tool is for everyone that needs to download your Git repositories for GitLab to your macOS computer, just for backup.You must know some technical tips just as the following steps mentioned.
+每个人都能够通过这个简单的工具来将你 GitLab 上的 Git 仓库下载到 macOS 电脑上备份。你需要了解一些以下步骤里面提到的技术细节。
 
-## How to use it?
+## 如何使用？
 
-### Step 1: Java & Git Environment
+### 第 1 步: Java 和 Git 环境
 
-Make sure Java environment is on your macOS and you can do global Java commands in your terminal, and then install Git on your macOS and make sure you can do global Git commands in your terminal.
+确保你的 macOS 上已经有 Java 环境，并且能够在终端里面执行全局 Java 命令，然后需要在你的 macOS 上安装 Git，并且确保能够在终端里面执行全局 Git 命令。
 
-For example:
+例如:
 
 ### Step 2: BackGitLabUp.jar.
 
