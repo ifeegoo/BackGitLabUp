@@ -3,6 +3,7 @@ package com.ifeegoo.app.backgitlabup.tools;
 import com.alibaba.fastjson.JSON;
 import com.ifeegoo.app.backgitlabup.beans.all.Project;
 
+import com.ifeegoo.app.backgitlabup.beans.group.ProjectsItem;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -140,48 +141,85 @@ public class BackGitLabUp {
             page++;
             if ((this.mGitLabGroupID != null) && (this.mGitLabGroupID != ""))
             {
-                apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/groups/" + this.mGitLabGroupID + "?private_token=" + this.mGitLabPrivateToken;
+                apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/groups/" + this.mGitLabGroupID + "?private_token=" + this.mGitLabPrivateToken + "&per_page=100&page=" + page;;
+
+                try
+                {
+                    List<ProjectsItem> projectItems = JSON.parseObject(run(apiURL), com.ifeegoo.app.backgitlabup.beans.group.Response.class).getProjects();
+
+                    if ((projectItems == null) || (projectItems.size() == 0))
+                    {
+                        return;
+                    }
+
+                    for (int i = 0; i < projectItems.size(); i++)
+                    {
+                        switch (this.mGitLabRepositoryAccessType)
+                        {
+                            case "SSH":
+                                this.mTotalRepositoriesURLs.add(projectItems.get(i).getSshUrlToRepo());
+                                break;
+                            case "HTTP":
+                                this.mTotalRepositoriesURLs.add(projectItems.get(i).getHttpUrlToRepo());
+                                break;
+                        }
+
+                        this.mTotalRepositoriesDirectories.add(projectItems.get(i).getPathWithNamespace());
+                    }
+
+                    if (projectItems.size() < 100)
+                    {
+                        this.resetData();
+                        break;
+                    }
+
+                } catch (Exception e)
+                {
+
+                }
             }
             else
             {
                 apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/projects?private_token=" + this.mGitLabPrivateToken + "&per_page=100&page=" + page;
-            }
 
-            try
-            {
-                List<Project> projects = JSON.parseArray(run(apiURL), Project.class);
-
-                if (projects == null)
+                try
                 {
-                    break;
-                }
+                    List<Project> projects = JSON.parseArray(run(apiURL), Project.class);
 
-                for (int i = 0; i < projects.size(); i++)
-                {
-                    switch (this.mGitLabRepositoryAccessType)
+                    if ((projects == null) || (projects.size() == 0))
                     {
-                        case "SSH":
-                            this.mTotalRepositoriesURLs.add(projects.get(i).getSshUrlToRepo());
-                            break;
-                        case "HTTP":
-                            this.mTotalRepositoriesURLs.add(projects.get(i).getHttpUrlToRepo());
-                            break;
+                        return;
                     }
 
-                    this.mTotalRepositoriesDirectories.add(projects.get(i).getPathWithNamespace());
-                }
+                    for (int i = 0; i < projects.size(); i++)
+                    {
+                        switch (this.mGitLabRepositoryAccessType)
+                        {
+                            case "SSH":
+                                this.mTotalRepositoriesURLs.add(projects.get(i).getSshUrlToRepo());
+                                break;
+                            case "HTTP":
+                                this.mTotalRepositoriesURLs.add(projects.get(i).getHttpUrlToRepo());
+                                break;
+                        }
 
-                if (projects.size() < 100)
+                        this.mTotalRepositoriesDirectories.add(projects.get(i).getPathWithNamespace());
+                    }
+
+                    if (projects.size() < 100)
+                    {
+                        this.resetData();
+                        break;
+                    }
+
+
+                }catch (Exception e)
                 {
-                    this.resetData();
                     break;
                 }
-
-
-            }catch (Exception e)
-            {
-                break;
             }
+
+
         }
     }
 
