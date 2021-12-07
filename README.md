@@ -1,5 +1,7 @@
 # BackGitLabUp
 
+[简体中文](/SimplifiedChinese.md)
+
 ## Introduction
 
 BackGitLabUp is a simple & useful GitLab backup tool on macOS which helps you to download all the git repositories that you can access to your local macOS.
@@ -94,7 +96,7 @@ Before you do this step, please check the `BackGitLabUp.sh` file carefully to ma
 
 ### NOTE
 
-I recommand you using the third party shell command tool, such as iTerm 2, which has been test for more than 800 repositories with more than 100GB data about in 12 hours.
+I recommand you using the third party shell command tool, such as iTerm 2, which has been test for more than 800 repositories with more than 100GB data about in 12 hours on macOS.
 
 **Make sure the network of GitLab server and your macOS are both stable and online during backup.**
 
