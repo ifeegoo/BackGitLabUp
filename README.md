@@ -47,7 +47,7 @@ Just like：
 `v3` Under GitLab v11.0  
 `v4` GitLab v11.0 or above
 
-`GitLabGroupID` **Only for Situation B** Your GitLab group ID, for example. 
+`GitLabGroupID` **Only for Situation B** Your GitLab group ID, for example.
 
 ![](/img/gitlab-group-id.png)
 
@@ -99,6 +99,7 @@ Before you do this step, please check the `BackGitLabUp.sh` file carefully to ma
 
 ### References
 
+![](/img/backgitlabup-demo.gif)
 
 ### NOTE
 

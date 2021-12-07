@@ -42,7 +42,7 @@ BackGitLabUp 是一个简单且有用的 GitLab 备份工具，能够帮助你�
 `https://gitlab.com`
 
 `GitLabAPIVersion` 你 GitLab API 版本，基于 GitLab 的版本。
-`v3` GitLab v11.0 以下 
+`v3` GitLab v11.0 以下
 `v4` GitLab v11.0 或者以上
 
 `GitLabGroupID` **仅针对于情形 B** 你的 GitLab Group ID，例如：
@@ -96,6 +96,7 @@ BackGitLabUp 是一个简单且有用的 GitLab 备份工具，能够帮助你�
 
 ### 参考
 
+![](/img/backgitlabup-demo.gif)
 
 ### 备注
 
