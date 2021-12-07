@@ -87,7 +87,7 @@ Use `java -jar BackGitLabUp.jar` `[-backup]` `[GitLabURL]` `[GitLabAPIVersion]` 
 
 > Execute 2nd shell command in your Terminal on macOS to clone all Git repositories.  
 
-Before you do this step, please check the `BackGitLabUp.sh` file carefully to make sure the data of Git repositories exactly right, the URLs and total account, and then you can execute the following command.
+Before you do this step, please check the `BackGitLabUp.sh` file carefully to make sure the data of Git repositories exactly right, especially the URLs, the directories and total account, and then you can execute the following command.
 
 `sh BackGitLabUp.sh`
 
