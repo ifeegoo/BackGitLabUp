@@ -22,7 +22,7 @@ For example:
 
 ### Step 2: BackGitLabUp.jar.
 
-Download BackGitLabUp.jar from this GitHub repository release:
+Download BackGitLabUp.jar from this GitHub repository release: [BackGitLabUp.jar](https://github.com/ifeegoo/BackGitLabUp/releases/download/v0.1.0/BackGitLabUp.jar)
 
 ### Step 3: Check the scope of Git repositories that you want to back up.
 
