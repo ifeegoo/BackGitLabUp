@@ -18,6 +18,8 @@ Make sure Java environment is on your macOS and you can do global Java commands 
 
 For example:
 
+![](/img/java-and-git-command-in-terminal.png)
+
 ### Step 2: BackGitLabUp.jar.
 
 Download BackGitLabUp.jar from this GitHub repository release:
@@ -47,11 +49,15 @@ Just like：
 
 `GitLabGroupID` **Only for Situation B** Your GitLab group ID, for example. 
 
+![](/img/gitlab-group-id.png)
+
 **Note:if there are no repositories under your specific group, but there are some subgroups, you cannot fetch the git repositories data, you must have git repositories under your group, not subgroup.**
 
 
 `GitLabPrivateToken` Your personal ***User Settings*** -> ***Access Tokens***.
 
+![](/img/gitlab-private-access-token.png)
+![](/img/gitlab-private-access-token-value.png)
 
 `GitLabRepositoryAccessType` The access type that you want to clone your Git repositories.  
 `HTTP` You want to clone your Git repositories by HTTP, and then you will need to input your username and password before repositories cloning.  
