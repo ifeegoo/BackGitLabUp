@@ -6,7 +6,7 @@
 
 BackGitLabUp is a simple & useful GitLab backup tool on macOS which helps you to download all the git repositories that you can access to your local macOS.
 
-## For who and the situation
+## For who and the situation？
 
 This simple tool is for everyone that needs to download your Git repositories for GitLab to your macOS computer, just for backup.You must know some technical tips just as the following steps mentioned.
 
