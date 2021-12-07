@@ -16,6 +16,8 @@ BackGitLabUp 是一个简单且有用的 GitLab 备份工具，能够帮助你�
 
 例如:
 
+![](/img/java-and-git-command-in-terminal.png)
+
 ### 第 2 步： BackGitLabUp.jar
 
 从这个 GitHub 仓库的 release 里面下载 BackGitLabUp.jar 文件：
@@ -45,20 +47,20 @@ BackGitLabUp 是一个简单且有用的 GitLab 备份工具，能够帮助你�
 
 `GitLabGroupID` **仅针对于情形 B** 你的 GitLab Group ID，例如：
 
+![](/img/gitlab-group-id.png)
 
 **注意：如果你指定的 Group 底下没有任何仓库，但是有一些子仓库，你也不能直接获取这些子 Group 里面的仓库信息，因此你需要指定一个有仓库的 Group。**
 
-
-
 `GitLabPrivateToken` 你的个人私有访问令牌。在此路径可以找到 ***User Settings*** -> ***Access Tokens***。
 
+![](/img/gitlab-private-access-token.png)
+![](/img/gitlab-private-access-token-value.png)
 
 `GitLabRepositoryAccessType` 你希望通过什么样的访问类型来克隆你的 Git 仓库。  
 `HTTP` 你希望通过 HTTP 方式来克隆你的 Git 仓库，在克隆开始之前，需要输入你 GitLab 的用户名和密码。  
 `SSH` 你希望通过 SSH 方式来克隆你的 Git 仓库，在开始第一步之前，你就需要配置好你电脑和 GitLab 之间的 SSH。
 
 ### 第 5 步：执行 Shell 命令
-
 
 **情形 A: GitLab 中所有你可见的 Git 仓库**
 
