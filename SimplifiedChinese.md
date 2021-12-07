@@ -54,49 +54,52 @@ BackGitLabUp 是一个简单且有用的 GitLab 备份工具，能够帮助你�
 
 
 `GitLabRepositoryAccessType` 你希望通过什么样的访问类型来克隆你的 Git 仓库。  
-`HTTP` You want to clone your Git repositories by HTTP, and then you will need to input your username and password before repositories cloning.  
-`SSH` You want to clone your Git repositories by SSH, and then you will need to configure SSH between your computer and GitLab first, and then start step 1.
+`HTTP` 你希望通过 HTTP 方式来克隆你的 Git 仓库，在克隆开始之前，需要输入你 GitLab 的用户名和密码。  
+`SSH` 你希望通过 SSH 方式来克隆你的 Git 仓库，在开始第一步之前，你就需要配置好你电脑和 GitLab 之间的 SSH。
 
-### Step 5: Shell commands executing.
+### 第 5 步：执行 Shell 命令
 
-**Situation A: All the Git repositories you can see in your GitLab**
 
-> Execute 1st shell command in your Terminal on macOS to fetch the data of all Git repositories.
+**情形 A: GitLab 中所有你可见的 Git 仓库**
 
-Use `java -jar BackGitLabUp.jar` `[-backup]` `[GitLabURL]` `[GitLabAPIVersion]` `[GitLabPrivateToken]` `[GitLabRepositoryAccessType]` to fetch data of all GitLab git repositories, and then we can get the BackGitLabUp.sh file.
+> 在你的 macOS 终端里面执行第一条 Shell 命令来获取所有 Git 仓库的数据。
+
+使用 `java -jar BackGitLabUp.jar` `[-backup]` `[GitLabURL]` `[GitLabAPIVersion]` `[GitLabPrivateToken]` `[GitLabRepositoryAccessType]` 来获取所有 GitLab Git 仓库的数据，然后我们能够得到 BackGitLabUp.sh 文件。
 
 `java -jar BackGitLabUp.jar -backup http://192.168.11.11/gitlab v3 aC4xVWx13wfs5a9xeyfA HTTP`  
 `java -jar BackGitLabUp.jar -backup http://gitlab.ifeegoo.com v4 3A2xw68rjjf37Sevnwsx SSH`  
 `java -jar BackGitLabUp.jar -backup http://gitlab.com v4 3A2xw68rjjf5k26vnwsx SSH`
 
-> Execute 2nd shell command in your Terminal on macOS to clone all Git repositories.  
+> 在你的 macOS 终端里面执行第二条 Shell 命令来克隆所有 Git 仓库。
 
-Before you do this step, please check the `BackGitLabUp.sh` file carefully to make sure the data of Git repositories exactly right, the URLs and total account, and then you can execute the following command.
+**在做这一步之前，请详细检查 `BackGitLabUp.sh` 文件，确保所有 Git 仓库的数据完全正确，尤其是 URL、目录以及总数量。** 然后你就可以执行以下命令：
 
 `sh BackGitLabUp.sh`
 
-**Situation B: Just to back up the Git repositories with specific Group**
+**情形 B: 通过指定的 Group 来备份 Git 仓库**
 
-> Execute 1st shell command in your Terminal on macOS to fetch the data of all Git repositories under the specific.
+> 在你的 macOS 终端里面执行第一条 Shell 命令来获取指定 Group 下所有 Git 仓库的数据。
 
-Use `java -jar BackGitLabUp.jar` `[-backup]` `[GitLabURL]` `[GitLabAPIVersion]` `[GitLabGroupID]` `[GitLabPrivateToken]` `[GitLabRepositoryAccessType]` to fetch data of all GitLab git repositories, and then we can get the BackGitLabUp.sh file.
+使用 `java -jar BackGitLabUp.jar` `[-backup]` `[GitLabURL]` `[GitLabAPIVersion]` `[GitLabGroupID]` `[GitLabPrivateToken]` `[GitLabRepositoryAccessType]` 来获取指定 Group 下所有 GitLab Git 仓库的数据，然后我们能够得到 BackGitLabUp.sh 文件。
 
 `java -jar BackGitLabUp.jar -backup http://192.168.11.11/gitlab v3 13135 aC4xVWx13wfs5a9xeyfA HTTP`  
 `java -jar BackGitLabUp.jar -backup http://gitlab.ifeegoo.com v4 24136 3A2xw68rjjf37Sevnwsx SSH`  
 `java -jar BackGitLabUp.jar -backup http://gitlab.com v4 17888 3A2xw68rjjf5k26vnwsx SSH`
 
-> Execute 2nd shell command in your Terminal on macOS to clone all Git repositories.  
+> 在你的 macOS 终端里面执行第二条 Shell 命令来克隆所有 Git 仓库。
 
-Before you do this step, please check the `BackGitLabUp.sh` file carefully to make sure the data of Git repositories exactly right, the URLs and total account, and then you can execute the following command.
+**在做这一步之前，请详细检查 `BackGitLabUp.sh` 文件，确保所有 Git 仓库的数据完全正确，尤其是 URL、目录以及总数量。** 然后你就可以执行以下命令：
 
 `sh BackGitLabUp.sh`
 
-### References
+### 参考
 
 
-### NOTE
+### 备注
 
 I recommand you using the third party shell command tool, such as iTerm 2, which has been test for more than 800 repositories with more than 100GB data about in 12 hours on macOS.
+
+
 
 **Make sure the network of GitLab server and your macOS are both stable and online during backup.**
 
