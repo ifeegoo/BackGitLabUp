@@ -19,6 +19,7 @@ public class BackGitLabUp {
     private static BackGitLabUp sBackGitLabUp;
     private String mGitLabURL = "";
     private String mGitLabAPIVersion = "";
+    private String mGitLabGroupID = "";
     private String mGitLabPrivateToken = "";
     private String mGitLabRepositoryAccessType = "";
 
@@ -103,6 +104,13 @@ public class BackGitLabUp {
         return sBackGitLabUp;
     }
 
+    public BackGitLabUp setGitLabGroupID(String gitLabGroupID)
+    {
+        this.mGitLabGroupID = gitLabGroupID;
+
+        return sBackGitLabUp;
+    }
+
     public BackGitLabUp setGitLabPrivateToken(String gitLabPrivateToken)
     {
         this.mGitLabPrivateToken = gitLabPrivateToken;
@@ -126,10 +134,19 @@ public class BackGitLabUp {
     private void getTotalRepositoriesURLs()
     {
         int page = 0;
+        String apiURL = "";
         while (true)
         {
             page++;
-            String apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/projects?private_token=" + this.mGitLabPrivateToken + "&per_page=100&page=" + page;
+            if ((this.mGitLabGroupID != null) && (this.mGitLabGroupID != ""))
+            {
+                apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/groups/" + this.mGitLabGroupID + "?private_token=" + this.mGitLabPrivateToken;
+            }
+            else
+            {
+                apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/projects?private_token=" + this.mGitLabPrivateToken + "&per_page=100&page=" + page;
+            }
+
             try
             {
                 List<Project> projects = JSON.parseArray(run(apiURL), Project.class);
@@ -156,6 +173,7 @@ public class BackGitLabUp {
 
                 if (projects.size() < 100)
                 {
+                    this.resetData();
                     break;
                 }
 
@@ -165,6 +183,18 @@ public class BackGitLabUp {
                 break;
             }
         }
+    }
+
+    private void resetData()
+    {
+        this.mGitLabURL = "";
+        this.mGitLabAPIVersion = "";
+        this.mGitLabGroupID = "";
+        this.mGitLabPrivateToken = "";
+        this.mGitLabRepositoryAccessType = "";
+
+        this.mTotalRepositoriesURLs = new ArrayList<String>();
+        this.mTotalRepositoriesURLs = new ArrayList<String>();
     }
 
     static OkHttpClient client = new OkHttpClient();
