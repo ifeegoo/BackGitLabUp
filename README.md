@@ -1,6 +1,6 @@
 # BackGitLabUp
 
-[简体中文](/SimplifiedChinese.md)
+[简体中文](/i18n/SimplifiedChinese.md)
 
 ## Introduction
 
