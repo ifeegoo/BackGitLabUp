@@ -222,7 +222,10 @@ public class BackGitLabUp {
                 }
             }
 
-            System.out.println("test");
+            if (this.mTotalRepositoriesDirectories.size() >= 10000)
+            {
+                return;
+            }
 
         }
     }
