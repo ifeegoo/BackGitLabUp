@@ -10,40 +10,40 @@ BackGitLabUp 是一个简单且有用的 GitLab 备份工具，能够帮助你�
 
 ## 如何使用？
 
-### 第 1 步: Java 和 Git 环境
+### 第 1 步： Java 和 Git 环境
 
 确保你的 macOS 上已经有 Java 环境，并且能够在终端里面执行全局 Java 命令，然后需要在你的 macOS 上安装 Git，并且确保能够在终端里面执行全局 Git 命令。
 
 例如:
 
-### Step 2: BackGitLabUp.jar.
+### 第 2 步： BackGitLabUp.jar
 
-Download BackGitLabUp.jar from this GitHub repository release:
+从这个 GitHub 仓库的 release 里面下载 BackGitLabUp.jar 文件：
 
-### Step 3: Check the scope of Git repositories that you want to back up.
+### 第 3 步：核对你想要备份的 Git 仓库的范围
 
-**Situation A: All the Git repositories you can see in your GitLab**
+**情形 A: GitLab 中所有你可见的 Git 仓库**
 
-You must pay attention that don't use this especially your GitLab has huge amount users, such as `https://gitlab.com`, or you have huge amount GitLab users in your company, you will see lots of repositories which are not related with you. If you are not in this situation, just try this to back up all your related Git repositories.
+你需要特别注意在你的 GitLab 有大量用户的情况下，不要这样做。例如 `https://gitlab.com`，或者是你公司有大量的 GitLab 用户，你将会看到很多和你不相关的仓库。如果你不是这种情况，那么是可以直接备份所有和你相关的 Git 仓库。
 
-**Situation B: Just to back up the Git repositories with specific Group**
+**情形 B: 通过指定的 Group 来备份 Git 仓库**
 
-Just check the GitLab group ID, and then, just do it!
+核对好 GitLab Group ID，就可以进一步往前走！
 
-### Step 4: Parameters checking: GitLabURL GitLabAPIVersion GitLabGroupID GitLabPrivateToken GitLabRepositoryAccessType
+### 第 4 步：核对参数: GitLabURL GitLabAPIVersion GitLabGroupID GitLabPrivateToken GitLabRepositoryAccessType
 
-`GitLabURL` Your GitLab URL address.
+`GitLabURL` 你的 GitLab URL 地址.
 
-Just like：  
+例如：  
 `http://192.168.11.11/gitlab`  
 `https://gitlab.ifeegoo.com`  
 `https://gitlab.com`
 
-`GitLabAPIVersion` Your GitLab API version, base on GitLab version.  
-`v3` Under GitLab v11.0  
-`v4` GitLab v11.0 or above
+`GitLabAPIVersion` 你 GitLab API 版本，基于 GitLab 的版本。
+`v3` GitLab v11.0 以下 
+`v4` GitLab v11.0 或者以上
 
-`GitLabGroupID` **Only for Situation B** Your GitLab group ID, for example. 
+`GitLabGroupID` **仅针对于情形 B** 你的 GitLab Group ID，例如：
 
 **Note:if there are no repositories under your specific group, but there are some subgroups, you cannot fetch the git repositories data, you must have git repositories under your group, not subgroup.**
 
