@@ -97,12 +97,10 @@ BackGitLabUp 是一个简单且有用的 GitLab 备份工具，能够帮助你�
 
 ### 备注
 
-I recommand you using the third party shell command tool, such as iTerm 2, which has been test for more than 800 repositories with more than 100GB data about in 12 hours on macOS.
+我推荐你使用第三方命令行工具，例如 iTerm 2，已经在 macOS 上通过了 12 小时左右的超过 800 个仓库多达 100GB 的数据测试。
 
+**在备份期间，确保你 GitLab 和 macOS 的网络稳定在线。**
 
+**确保你 macOS 在线并且长时间处于网络连接中，切勿让其休眠。**
 
-**Make sure the network of GitLab server and your macOS are both stable and online during backup.**
-
-**Make sure your macOS are online for network connection, don't let it sleep.**
-
-This command tool is really low level, but it's useful if you have good condition.
+这个命令行工具处于低级水平，如果你遵循相关条件，其实也是比较实用。
