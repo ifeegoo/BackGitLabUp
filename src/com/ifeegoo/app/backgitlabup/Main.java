@@ -39,7 +39,7 @@ public class Main {
                             System.out.println(
                                     "java -jar BackGitLabUp.jar -backup http://gitlab.com v4 3A2xw68rjjf5kSevnwsx SSH");
                             System.out.println(
-                                    "3.2 Just check the BackGitLabUp.sh file, make sure that you can see the data of all GitLab Git repositories and check whether they are right, and then you can just do the follow shell command in your terminal to download all the Git repositories, and remember don't close the terminal!!");
+                                    "3.2 Just check the BackGitLabUp.sh file, make sure that you can see the data of all GitLab Git repositories and check whether they are right, and then you can just do the following shell command in your terminal to download all the Git repositories, and remember don't close the terminal!!");
                             System.out.println(
                                     "sh BackGitLabUp.sh");
                             System.out.println("****************************************************************");
