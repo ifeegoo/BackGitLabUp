@@ -45,13 +45,15 @@ BackGitLabUp 是一个简单且有用的 GitLab 备份工具，能够帮助你�
 
 `GitLabGroupID` **仅针对于情形 B** 你的 GitLab Group ID，例如：
 
-**Note:if there are no repositories under your specific group, but there are some subgroups, you cannot fetch the git repositories data, you must have git repositories under your group, not subgroup.**
+
+**注意：如果你指定的 Group 底下没有任何仓库，但是有一些子仓库，你也不能直接获取这些子 Group 里面的仓库信息，因此你需要指定一个有仓库的 Group。**
 
 
-`GitLabPrivateToken` Your personal ***User Settings*** -> ***Access Tokens***.
+
+`GitLabPrivateToken` 你的个人私有访问令牌。在此路径可以找到 ***User Settings*** -> ***Access Tokens***。
 
 
-`GitLabRepositoryAccessType` The access type that you want to clone your Git repositories.  
+`GitLabRepositoryAccessType` 你希望通过什么样的访问类型来克隆你的 Git 仓库。  
 `HTTP` You want to clone your Git repositories by HTTP, and then you will need to input your username and password before repositories cloning.  
 `SSH` You want to clone your Git repositories by SSH, and then you will need to configure SSH between your computer and GitLab first, and then start step 1.
 
