@@ -18,6 +18,10 @@ import java.util.List;
 public class BackGitLabUp {
 
     private static BackGitLabUp sBackGitLabUp;
+    private static final int MAX_ACCOUNT_PER_PAGE = 100;
+    private static final int MIN_ACCOUNT_PER_PAGE = 20;
+
+
     private String mGitLabURL = "";
     private String mGitLabAPIVersion = "";
     private String mGitLabGroupID = "";
@@ -26,6 +30,8 @@ public class BackGitLabUp {
 
     private List<String> mTotalRepositoriesURLs = new ArrayList<String>();
     private List<String> mTotalRepositoriesDirectories = new ArrayList<String>();
+
+    private List<ProjectsItem> mTotalRepositoriesTempByGroupID = new ArrayList<ProjectsItem>();
 
     private BackGitLabUp()
     {
@@ -141,13 +147,13 @@ public class BackGitLabUp {
             page++;
             if ((this.mGitLabGroupID != null) && (this.mGitLabGroupID != ""))
             {
-                apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/groups/" + this.mGitLabGroupID + "?private_token=" + this.mGitLabPrivateToken + "&per_page=100&page=" + page;;
+                apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/groups/" + this.mGitLabGroupID + "?private_token=" + this.mGitLabPrivateToken  + "&per_page=" + MAX_ACCOUNT_PER_PAGE + "&page=" + page;
 
                 try
                 {
                     List<ProjectsItem> projectItems = JSON.parseObject(run(apiURL), com.ifeegoo.app.backgitlabup.beans.group.Response.class).getProjects();
 
-                    if ((projectItems == null) || (projectItems.size() == 0))
+                    if ((projectItems == null) || (projectItems.size() == 0) || (projectItems.equals(this.mTotalRepositoriesTempByGroupID)))
                     {
                         return;
                     }
@@ -167,10 +173,11 @@ public class BackGitLabUp {
                         this.mTotalRepositoriesDirectories.add(projectItems.get(i).getPathWithNamespace());
                     }
 
-                    if (projectItems.size() < 100)
+                    projectItems = this.mTotalRepositoriesTempByGroupID;
+
+                    if (projectItems.size() < MAX_ACCOUNT_PER_PAGE)
                     {
-                        this.resetData();
-                        break;
+                        return;
                     }
 
                 } catch (Exception e)
@@ -180,13 +187,13 @@ public class BackGitLabUp {
             }
             else
             {
-                apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/projects?private_token=" + this.mGitLabPrivateToken + "&per_page=100&page=" + page;
+                apiURL = this.mGitLabURL + "/api/" + this.mGitLabAPIVersion + "/projects?private_token=" + this.mGitLabPrivateToken + "&per_page=" + MAX_ACCOUNT_PER_PAGE + "&page=" + page;
 
                 try
                 {
                     List<Project> projects = JSON.parseArray(run(apiURL), Project.class);
 
-                    if ((projects == null) || (projects.size() == 0))
+                    if ((projects == null) || (projects.size() == 0) || (projects.equals(this.mTotalRepositoriesTempByGroupID)))
                     {
                         return;
                     }
@@ -206,19 +213,16 @@ public class BackGitLabUp {
                         this.mTotalRepositoriesDirectories.add(projects.get(i).getPathWithNamespace());
                     }
 
-                    if (projects.size() < 100)
+                    if (projects.size() < MAX_ACCOUNT_PER_PAGE)
                     {
-                        this.resetData();
-                        break;
+                        return;
                     }
-
-
                 }catch (Exception e)
                 {
-                    break;
                 }
             }
 
+            System.out.println("test");
 
         }
     }
@@ -232,7 +236,9 @@ public class BackGitLabUp {
         this.mGitLabRepositoryAccessType = "";
 
         this.mTotalRepositoriesURLs = new ArrayList<String>();
-        this.mTotalRepositoriesURLs = new ArrayList<String>();
+        this.mTotalRepositoriesDirectories = new ArrayList<String>();
+
+        this.mTotalRepositoriesTempByGroupID = new ArrayList<ProjectsItem>();
     }
 
     static OkHttpClient client = new OkHttpClient();
@@ -322,8 +328,10 @@ public class BackGitLabUp {
                     bufferedOutput.flush();
                     bufferedOutput.close();
 
-                    Runtime.getRuntime().exec("echo \"The BackGitLabUp bash shell file is created.\"");
+
                 }
+
+                this.resetData();
             } catch (IOException ex)
             {
                 ex.printStackTrace();
